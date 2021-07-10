@@ -1,0 +1,18 @@
+img{
+    height: 30pxnpm install ngx-bootstrap --save
+    ;
+}
+.cursor-pointer {
+    cursor: pointer !important;
+}
+mat-icon {
+    border: none;
+    outline: none;
+}
+
+button:focus, 
+button:active:focus, 
+button.active:focus {
+    outline: none !important;
+    outline-style: none !important;
+}

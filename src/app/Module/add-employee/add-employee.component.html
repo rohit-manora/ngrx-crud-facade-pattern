@@ -1,0 +1,53 @@
+<div class="text-center p-2" *ngIf="!isEdit"><h4>Create Employee</h4></div>
+<div class="text-center p-2" *ngIf="isEdit"><h4>Update Employee</h4></div>
+
+<div  *ngIf="isEdit" class="text-center p-2">
+  <img [src]="empForm.get('avatar').value" alt="">
+</div>
+<div  *ngIf="!isEdit" class="text-center m-2"><span>Note: Once we create Employee its not reflecting in get all Employee API response</span></div>
+
+
+<div class="p-4">
+  <form [formGroup]="empForm" (ngSubmit)="save(empForm.value)">
+    <div class="row d-flex justify-content-center align-items-center" *ngIf="isEdit">
+      <mat-label class="col-md-3">Id</mat-label>
+      <mat-form-field class="col-md-8" appearance="outline">
+        <input matInput type="text" id="id" readonly formControlName="id">
+      </mat-form-field>
+
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+      <mat-label class="col-md-3">First Name</mat-label>
+      <mat-form-field class="col-md-8" appearance="outline">
+        <input matInput type="text" id="first_name" placeholder="Enter first name" formControlName="first_name">
+        <mat-error  *ngIf="(empForm.get('first_name').touched) && empForm.get('first_name').errors?.required">
+          First name is required
+        </mat-error>
+      </mat-form-field>
+      
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+      <mat-label class="col-md-3">Last Name</mat-label>
+      <mat-form-field class="col-md-8" appearance="outline">
+        <input matInput type="text" id="last_name" placeholder="Enter last name" formControlName="last_name">
+        <mat-error  *ngIf="(empForm.get('last_name').touched) && empForm.get('last_name').errors?.required">
+          Last name is required
+        </mat-error>
+      </mat-form-field>
+   
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+      <mat-label class="col-md-3">Email</mat-label>
+      <mat-form-field class="col-md-8" appearance="outline">
+        <input matInput type="text" id="email" placeholder="Enter last name" formControlName="email">
+        <mat-error  *ngIf="(empForm.get('email').touched) && empForm.get('email').errors?.required">
+          Email is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="text-center p-3">
+      <button mat-stroked-button [disabled]="empForm.invalid" *ngIf="!isEdit" type="submit" class="btn btn-primary">SAVE </button>
+      <button mat-stroked-button [disabled]="empForm.invalid" *ngIf="isEdit" type="submit" class="btn btn-primary">UPDATE </button>
+    </div>
+  </form>
+</div>

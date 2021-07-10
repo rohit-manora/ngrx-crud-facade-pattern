@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GeneralFacadeService } from './Helper/Service/general-facade.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TCE-Assignment';
+  public data = {};
+  constructor() {
+    //  this.general.getEmployees(1);
+  }
+
 }
